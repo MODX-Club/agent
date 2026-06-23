@@ -9,20 +9,23 @@ import { LovableLayout } from '../lovable/v1/src/lovable-ui/LovableLayout'
 import { ChatWidget } from 'src/components/Chat/ChatWidget'
 import { useRouter } from 'next/router'
 import { lovableMockData } from '../lovable/v1/src/lovable-context/mocks'
+import { useOpenChatWithMessage } from 'src/components/Chat/hooks/useOpenChatWithMessage'
 
 export const LayoutCustom: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const router = useRouter()
 
+  const onClickCallback = useOpenChatWithMessage()
+
   const context = useMemo<LovableContextValue>(() => {
     return {
       onNavigate: (url: string) => router.push(url),
-      onPrimaryCta: () => console.log('onPrimaryCta'),
+      onPrimaryCta: onClickCallback,
       onSecondaryCta: () => console.log('onSecondaryCta'),
       data: lovableMockData,
     }
-  }, [router])
+  }, [router, onClickCallback])
 
   return (
     <>

@@ -107,7 +107,7 @@ export interface LovableMockData {
   }
   nav: LovableNavItem[]
   ctaLabel: string
-  docsLabel: string
+  docsLabel?: string
   hero: LovableHeroData
   problem: LovableProblemData
   process: LovableProcessData
@@ -348,7 +348,7 @@ export const lovableMockData: LovableMockData = {
         title: 'Продукт',
         items: [
           { id: 'how', label: 'Как это работает', href: '#how' },
-          { id: 'stages', label: 'Этапы переноса', href: '#stages' },
+          { id: 'stages', label: 'Этапы переноса', href: '#how' },
           { id: 'tech', label: 'Технологии', href: '#tech' },
           { id: 'guarantees', label: 'Гарантии', href: '#guarantees' },
         ],
@@ -366,12 +366,12 @@ export const lovableMockData: LovableMockData = {
         id: 'resources',
         title: 'Ресурсы',
         items: [
-          { id: 'docs', label: 'Документация', href: '#docs' },
+          // { id: 'docs', label: 'Документация', href: '#docs' },
           { id: 'plan', label: 'План переноса', href: '#plan' },
           { id: 'faq', label: 'FAQ', href: '#faq' },
         ],
       },
     ],
-    copyright: '© 2025 modx.club — Безопасная модернизация MODX-сайтов',
+    copyright: '© 2026 modx.club — Безопасная модернизация MODX-сайтов',
   },
 }

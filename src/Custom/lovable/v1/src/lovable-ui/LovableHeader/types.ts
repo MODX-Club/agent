@@ -4,9 +4,9 @@ export interface LovableHeaderProps {
   brandName: string
   nav: LovableNavItem[]
   ctaLabel: string
-  docsLabel: string
+  docsLabel?: string
   onNavigate?: (href: string) => void
-  onCtaClick?: () => void
+  onCtaClick?: React.MouseEventHandler<HTMLButtonElement>
   onDocsClick?: () => void
   onLogoClick?: () => void
 }

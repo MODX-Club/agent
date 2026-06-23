@@ -18,7 +18,7 @@ import type { LovableCtaProps } from './types'
 export const LovableCta: React.FC<LovableCtaProps> = ({
   data,
   onPrimaryCta,
-  onSecondaryCta,
+  // onSecondaryCta,
 }) => {
   return (
     <PageSection id="contacts">
@@ -29,12 +29,16 @@ export const LovableCta: React.FC<LovableCtaProps> = ({
             <CtaTitle>{data.title}</CtaTitle>
             <CtaDescription>{data.description}</CtaDescription>
             <CtaActions>
-              <LovableButton variant="primary" onClick={onPrimaryCta}>
+              <LovableButton
+                variant="primary"
+                onClick={onPrimaryCta}
+                value={'Хочу заказать аудит сайта'}
+              >
                 {data.primaryCta}
               </LovableButton>
-              <LovableButton variant="ghost" onClick={onSecondaryCta}>
+              {/* <LovableButton variant="ghost" onClick={onSecondaryCta}>
                 {data.secondaryCta}
-              </LovableButton>
+              </LovableButton> */}
             </CtaActions>
             <CtaNote>{data.note}</CtaNote>
           </CtaContent>

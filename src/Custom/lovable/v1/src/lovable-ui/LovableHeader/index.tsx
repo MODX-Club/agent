@@ -47,6 +47,7 @@ export const LovableHeader: React.FC<LovableHeaderProps> = ({
               size="sm"
               iconLeft={<FiSend />}
               onClick={onCtaClick}
+              value={'Как мне связаться с администрацией сайта?'}
             >
               {ctaLabel}
             </LovableButton>

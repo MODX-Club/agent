@@ -44,7 +44,11 @@ export const LovableHero: React.FC<LovableHeroProps> = ({
             </HeroBadges>
 
             <HeroActions>
-              <LovableButton variant="primary" onClick={onPrimaryCta}>
+              <LovableButton
+                variant="primary"
+                onClick={onPrimaryCta}
+                value={'Хочу обсудить перенос сайта'}
+              >
                 {data.primaryCta}
               </LovableButton>
               <LovableButton variant="ghost" onClick={onSecondaryCta}>

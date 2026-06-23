@@ -4,7 +4,7 @@ import type { LovableMockData } from './mocks'
 export interface LovableContextValue {
   data: LovableMockData
   onNavigate: (href: string) => void
-  onPrimaryCta: () => void
+  onPrimaryCta?: React.MouseEventHandler<HTMLButtonElement>
   onSecondaryCta: () => void
 }
 
