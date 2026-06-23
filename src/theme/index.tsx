@@ -1,3 +1,5 @@
+import { LovableTheme } from 'src/Custom/lovable/v1/src/lovable-ui/theme'
+
 const breakpoints = {
   xs: 480,
   sm: 768,
@@ -112,6 +114,8 @@ export const theme = {
     popover: 1100,
     tooltip: 1200,
   },
+
+  ...LovableTheme,
 }
 
 export type Theme = typeof theme
