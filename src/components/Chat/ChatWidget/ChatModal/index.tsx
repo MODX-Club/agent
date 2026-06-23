@@ -36,7 +36,7 @@ export const ChatModal: React.FC<ChatModalProps> = ({
       onTouchMove={stopPropagation}
     >
       <ChatHeader>
-        <ChatTitle>AI Assistant</ChatTitle>
+        <ChatTitle>ИИ Ассистент</ChatTitle>
         <HeaderButtons>
           <ExpandButton onClick={onExpand}>
             {isExpanded ? (
