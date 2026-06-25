@@ -1,12 +1,12 @@
-import { useCallback } from 'react'
 import { useLovableContext } from '../../lovable-context/LovableContext'
 import { LovableFooter } from '../LovableFooter'
 import { LovableHeader } from '../LovableHeader'
 import { LovableLayoutMainStyled, LovableLayoutStyled } from './styles'
-import type { LovableLayoutProps } from './types'
 
-export const LovableLayout: React.FC<LovableLayoutProps> = ({ children }) => {
-  const { data, onNavigate, onPrimaryCta, onSecondaryCta } = useLovableContext()
+export const LovableLayout: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
+  const { data, onPrimaryCta, onSecondaryCta } = useLovableContext()
 
   return (
     <LovableLayoutStyled>
@@ -15,10 +15,8 @@ export const LovableLayout: React.FC<LovableLayoutProps> = ({ children }) => {
         nav={data.nav}
         ctaLabel={data.ctaLabel}
         docsLabel={data.docsLabel}
-        onNavigate={onNavigate}
         onCtaClick={onPrimaryCta}
         onDocsClick={onSecondaryCta}
-        onLogoClick={useCallback(() => onNavigate?.('#top'), [onNavigate])}
       />
       <LovableLayoutMainStyled>{children}</LovableLayoutMainStyled>
       <LovableFooter
@@ -26,7 +24,6 @@ export const LovableLayout: React.FC<LovableLayoutProps> = ({ children }) => {
         description={data.footer.description}
         columns={data.footer.columns}
         copyright={data.footer.copyright}
-        onNavigate={onNavigate}
       />
     </LovableLayoutStyled>
   )

@@ -12,30 +12,32 @@ import {
   LovableHeaderNavStyled,
   LovableHeaderStyled,
 } from './styles'
-import type { LovableHeaderProps } from './types'
+import { LovableNavItem } from '../LovableFooter/types'
+
+interface LovableHeaderProps {
+  brandName: string
+  nav: LovableNavItem[]
+  ctaLabel: string
+  docsLabel?: string
+  onCtaClick?: React.MouseEventHandler<HTMLButtonElement>
+  onDocsClick?: () => void
+}
 
 export const LovableHeader: React.FC<LovableHeaderProps> = ({
   brandName,
   nav,
   ctaLabel,
   docsLabel,
-  onNavigate,
   onCtaClick,
   onDocsClick,
-  onLogoClick,
 }) => {
   const [open, setOpen] = useState(false)
-
-  const handleNavigate = (href: string) => {
-    setOpen(false)
-    onNavigate?.(href)
-  }
 
   return (
     <LovableHeaderStyled>
       <LovableContainer>
         <LovableHeaderInnerStyled>
-          <LovableLogo name={brandName} onClick={onLogoClick} />
+          <LovableLogo name={brandName} />
           <LovableHeaderActionsStyled>
             {docsLabel && (
               <LovableHeaderDocsStyled onClick={onDocsClick}>
@@ -61,11 +63,7 @@ export const LovableHeader: React.FC<LovableHeaderProps> = ({
           </LovableHeaderActionsStyled>
           <LovableHeaderNavStyled $open={open}>
             {nav.map((item) => (
-              <LovableHeaderNavItemStyled
-                key={item.id}
-                // eslint-disable-next-line react/jsx-no-bind
-                onClick={() => handleNavigate(item.href)}
-              >
+              <LovableHeaderNavItemStyled key={item.id} href={item.href}>
                 {item.label}
               </LovableHeaderNavItemStyled>
             ))}

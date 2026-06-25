@@ -11,14 +11,20 @@ import {
   LovableFooterLinkStyled,
   LovableFooterStyled,
 } from './styles'
-import type { LovableFooterProps } from './types'
+import { LovableFooterColumn } from './types'
+
+export interface LovableFooterProps {
+  brandName: string
+  description: string
+  columns: LovableFooterColumn[]
+  copyright: string
+}
 
 export const LovableFooter: React.FC<LovableFooterProps> = ({
   brandName,
   description,
   columns,
   copyright,
-  onNavigate,
 }) => {
   return (
     <LovableFooterStyled>
@@ -39,11 +45,7 @@ export const LovableFooter: React.FC<LovableFooterProps> = ({
               </LovableFooterColumnTitleStyled>
               <LovableFooterColumnListStyled>
                 {col.items.map((it) => (
-                  <LovableFooterLinkStyled
-                    key={it.id}
-                    // eslint-disable-next-line react/jsx-no-bind
-                    onClick={() => onNavigate?.(it.href)}
-                  >
+                  <LovableFooterLinkStyled key={it.id} href={it.href}>
                     {it.label}
                   </LovableFooterLinkStyled>
                 ))}

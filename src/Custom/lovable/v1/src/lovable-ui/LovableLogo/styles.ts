@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
-export const LovableLogoStyled = styled.button`
+export const LovableLogoStyled = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.lovableSpace.xs};

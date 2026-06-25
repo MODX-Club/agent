@@ -3,13 +3,16 @@ import {
   LovableLogoStyled,
   LovableLogoTextStyled,
 } from './styles'
-import type { LovableLogoProps } from './types'
 
-export const LovableLogo: React.FC<LovableLogoProps> = ({ name, onClick }) => {
+interface LovableLogoProps {
+  name: string
+}
+
+export const LovableLogo: React.FC<LovableLogoProps> = ({ name }) => {
   const [head, ...rest] = name.split('.')
   const tail = rest.join('.')
   return (
-    <LovableLogoStyled onClick={onClick} type="button" aria-label={name}>
+    <LovableLogoStyled type="button" aria-label={name} href={'/'}>
       <LovableLogoMarkStyled>M</LovableLogoMarkStyled>
       <LovableLogoTextStyled>
         {head}

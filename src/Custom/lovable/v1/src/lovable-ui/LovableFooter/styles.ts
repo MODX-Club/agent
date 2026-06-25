@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 
 export const LovableFooterStyled = styled.footer`
@@ -54,7 +55,7 @@ export const LovableFooterColumnTitleStyled = styled.div`
   letter-spacing: 0.06em;
 `
 
-export const LovableFooterLinkStyled = styled.button`
+export const LovableFooterLinkStyled = styled(Link)`
   text-align: left;
   background: none;
   border: none;

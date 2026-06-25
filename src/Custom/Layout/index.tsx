@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useMemo } from 'react'
 import {
   LovableContextValue,
@@ -22,7 +21,8 @@ export const LayoutCustom: React.FC<React.PropsWithChildren> = ({
     return {
       onNavigate: (url: string) => router.push(url),
       onPrimaryCta: onClickCallback,
-      onSecondaryCta: () => console.log('onSecondaryCta'),
+      // TODO Fix
+      onSecondaryCta: () => console.error('onSecondaryCta'),
       data: lovableMockData,
     }
   }, [router, onClickCallback])

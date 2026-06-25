@@ -52,15 +52,14 @@ export const generateSitemapIndex = async ({
     <sitemap>
         <loc>${siteOrigin}/sitemap/main.xml</loc>
     </sitemap>
-    </sitemapindex>`
+    <sitemap>
+        <loc>${siteOrigin}${SitemapSection.posts}</loc>
+    </sitemap>
+    <sitemap>
+        <loc>${siteOrigin}${SitemapSection.users}</loc>
+    </sitemap>
+  </sitemapindex>`
 }
-
-// <sitemap>
-//     <loc>${siteOrigin}${SitemapSection.posts}</loc>
-// </sitemap>
-// <sitemap>
-//     <loc>${siteOrigin}${SitemapSection.users}</loc>
-// </sitemap>
 
 export const generateSitemapMain = async (
   props: SitemapGeneratorProps,
@@ -74,6 +73,10 @@ export const generateSitemapMain = async (
   const xmlData: UrlItem[] = [
     {
       url: `/`,
+      updatedAt: monday.toISOString().split('T')[0],
+    },
+    {
+      url: `/posts`,
       updatedAt: monday.toISOString().split('T')[0],
     },
   ]
@@ -155,12 +158,12 @@ export const generateSitemap = async (req: Request, res: Response) => {
     case SitemapSection.main:
       res.send(await generateSitemapMain({ siteOrigin }))
       break
-    // case SitemapSection.posts:
-    //   res.send(await generateSitemapPosts({ siteOrigin }))
-    //   break
-    // case SitemapSection.users:
-    //   res.send(await generateSitemapUsers({ siteOrigin }))
-    //   break
+    case SitemapSection.posts:
+      res.send(await generateSitemapPosts({ siteOrigin }))
+      break
+    case SitemapSection.users:
+      res.send(await generateSitemapUsers({ siteOrigin }))
+      break
     default:
       res.status(404).send('Not found')
   }

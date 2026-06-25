@@ -68,8 +68,8 @@ builder.mutationField('updatePost', (t) =>
       const updatedPost = await ctx.prisma.post.update({
         where: { id: args.where.id },
         data: {
-          ...args.data,
           ...sharedFields,
+          ...args.data,
           title: args.data.title ?? undefined,
           description: args.data.description ?? undefined,
           intro: args.data.intro ?? undefined,

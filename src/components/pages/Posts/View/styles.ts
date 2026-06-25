@@ -1,3 +1,4 @@
+import { PageSection } from 'src/Custom/lovable/v1/src/pages/MainPage/styles'
 import styled from 'styled-components'
 
 export const PostsPageViewTitleStyled = styled.h1`
@@ -16,4 +17,4 @@ export const PostsPageViewToolbarStyled = styled.div`
   justify-content: space-between;
 `
 
-export const PostsPageViewStyled = styled.div``
+export const PostsPageViewStyled = styled(PageSection)``

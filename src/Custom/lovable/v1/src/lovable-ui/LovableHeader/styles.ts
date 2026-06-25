@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
 export const LovableHeaderStyled = styled.header`
@@ -40,7 +41,7 @@ export const LovableHeaderNavStyled = styled.nav<{ $open: boolean }>`
   }
 `
 
-export const LovableHeaderNavItemStyled = styled.button`
+export const LovableHeaderNavItemStyled = styled(Link)`
   background: none;
   border: none;
   text-align: left;
