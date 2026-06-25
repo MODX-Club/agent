@@ -15,7 +15,8 @@ export const PostHeaderStyled = styled.header`
   max-width: 760px;
   margin: 0 auto ${({ theme }) => theme.lovableSpace.lg};
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: ${({ theme }) => theme.lovableSpace.md};
 
   @media (min-width: ${({ theme }) => theme.lovableBreakpoint.tablet}) {
