@@ -375,6 +375,6 @@ export const lovableMockData: LovableMockData = {
         ],
       },
     ],
-    copyright: '© 2026 modx.club — Безопасная модернизация MODX-сайтов',
+    copyright: '© 2013–2026 modx.club — Безопасная модернизация MODX-сайтов',
   },
 }
