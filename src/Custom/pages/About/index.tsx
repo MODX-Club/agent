@@ -33,51 +33,55 @@ import Image from 'next/image'
 import { useOpenChatWithMessage } from 'src/components/Chat/hooks/useOpenChatWithMessage'
 import { Button } from 'src/ui-kit/Button'
 
-export const AboutPageCustom: Page = (props) => {
+export const AboutPageCustom: Page = ({ siteOrigin }) => {
   const siteTitle = 'О Клубе — MODX.Club'
 
   const description =
     'Николай Ланец (Fi1osof) — основатель MODX-Клуба. Помогаю перевести MODX-сайты на современные технологии без потери SEO и данных.'
 
-  const siteUrl = props.origin
-  const pageUrl = `${siteUrl}/about`
+  const pageUrl = `${siteOrigin}/about`
 
   const onClickHandler = useOpenChatWithMessage()
 
   return (
     <>
-      <SeoHeaders title={siteTitle} description={description} />
+      <SeoHeaders
+        title={siteTitle}
+        description={description}
+        canonical={'/about'}
+        siteOrigin={siteOrigin}
+      />
 
-      {siteUrl && (
+      {siteOrigin && (
         <JsonLd
           data={createWebPage({
             name: siteTitle,
             url: pageUrl,
             description,
-            image: `${siteUrl}${iAm.src}`,
+            image: `${siteOrigin}${iAm.src}`,
             isPartOf: {
               '@type': 'WebSite',
               name: 'MODX.Club',
-              url: siteUrl,
+              url: siteOrigin,
             },
           })}
         />
       )}
 
-      {siteUrl && (
+      {siteOrigin && (
         <JsonLd
           data={createPerson({
             name: 'Николай Ланец',
             url: pageUrl,
-            image: `${siteUrl}${iAm.src}`,
+            image: `${siteOrigin}${iAm.src}`,
           })}
         />
       )}
 
-      {siteUrl && (
+      {siteOrigin && (
         <JsonLd
           data={createBreadcrumbList({
-            origin: siteUrl,
+            siteOrigin,
             items: [{ name: 'Главная', url: '/' }, { name: 'О Клубе' }],
           })}
         />

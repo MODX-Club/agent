@@ -1,4 +1,4 @@
-import { builder } from '../../../builder'
+import { builder } from 'server/schema/builder'
 import { TaskWorkLogCreateInput } from '../inputs'
 
 builder.mutationField('createTaskWorkLog', (t) =>
@@ -15,7 +15,6 @@ builder.mutationField('createTaskWorkLog', (t) =>
       const task = await ctx.prisma.task.findUnique({
         where: {
           id: args.data.taskId,
-          assigneeId: ctx.currentUser.id,
         },
       })
 

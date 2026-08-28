@@ -8,7 +8,7 @@ export const PostsPageView: React.FC<PostsPageViewProps> = ({
   count,
   page,
 }) => {
-  const totalPages = count ? Math.floor(count / 10) : 0
+  const totalPages = count ? Math.ceil(count / 10) : 0
 
   return (
     <LovablePostsPage items={posts}>

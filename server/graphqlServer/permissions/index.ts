@@ -42,14 +42,14 @@ const ruleTree = {
   Query: {
     ethAccount: isSudo,
     ethAccounts: isSudo,
-    concepts: isSudo,
+    // concepts: isSudo,
     facts: isSudo,
     factParticipations: isSudo,
     factProjections: isSudo,
     knowledgeSpaces: isSudo,
-    file: isSudo,
-    files: isSudo,
-    filesCount: isSudo,
+    // file: isSudo,
+    // files: isSudo,
+    // filesCount: isSudo,
   },
   Mutation: {
     // Example: require authentication for specific mutations
@@ -77,12 +77,15 @@ const ruleTree = {
     createReaction: isActive,
     createReflex: isActive,
     deleteConcept: isActive,
+    validateConcepts: isActive,
     llmCompletion: isActive,
     llmChatCompletion: isActive,
     llmImageGeneration: isActive,
     signPost: isActive,
     world3dObjectCreate: isActive,
     sendMail: isSudo,
+    createRedirectRule: isSudo,
+    createSiteRoute: isSudo,
   },
 } satisfies PermissionsRuleTree
 

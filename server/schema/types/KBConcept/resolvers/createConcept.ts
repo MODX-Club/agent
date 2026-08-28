@@ -1,6 +1,11 @@
 import { Prisma } from '@prisma/client'
-import { builder } from '../../../builder'
+import { builder } from 'server/schema/builder'
 import { KBConceptCreateInput } from '../inputs'
+import { createCUID } from '../../helpers/createCUID'
+import { slugifyUri } from '../../helpers/slugifyUri'
+import { buildValidUrisSet } from '../helpers/buildValidUrisSet'
+import { removeInvalidLinks } from '../helpers/validateInternalLinks'
+import { normalizeMarkdownContent } from '../helpers/normalizeMarkdownContent'
 
 builder.mutationField('createConcept', (t) =>
   t.prismaField({
@@ -14,16 +19,55 @@ builder.mutationField('createConcept', (t) =>
       }
 
       const {
-        data: { data, ...other },
+        data: {
+          name,
+          quality,
+          data: dataArg,
+          visibility,
+          uri,
+          content,
+          ...other
+        },
       } = args
+
+      if (!name) {
+        throw new Error('name required')
+      }
+
+      const id = createCUID()
+
+      const data: Prisma.KBConceptCreateInput = {
+        ...other,
+        id,
+        name,
+        quality: quality ?? undefined,
+        visibility: visibility ?? undefined,
+        data: dataArg as Prisma.KBConceptCreateInput['data'],
+        uri: slugifyUri(uri || `/concepts/${name}`),
+        CreatedBy: {
+          connect: {
+            id: ctx.currentUser.id,
+          },
+        },
+      }
+
+      if (content) {
+        const validUris = await buildValidUrisSet(ctx)
+
+        // 1. Remove invalid internal links
+        let processedContent = (
+          await removeInvalidLinks(content, validUris, true)
+        ).content
+
+        // 2. Normalize markdown: add blank lines after opening tags for proper rendering
+        processedContent = await normalizeMarkdownContent(processedContent)
+
+        data.content = processedContent
+      }
 
       return ctx.prisma.kBConcept.create({
         ...query,
-        data: {
-          ...other,
-          data: data as Prisma.KBConceptCreateInput['data'],
-          createdById: ctx.currentUser.id,
-        },
+        data,
       })
     },
   }),

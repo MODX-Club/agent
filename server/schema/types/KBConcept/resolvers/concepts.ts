@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client'
 import { GraphQLResolveInfo } from 'graphql'
-import { builder } from '../../../builder'
+import { builder } from 'server/schema/builder'
 import { KBConceptOrderByInput, KBConceptWhereInput } from '../inputs'
 import { buildKBConceptWhere } from '../helpers/buildWhere'
 import { PrismaContext } from 'server/context/interfaces'
@@ -47,6 +47,7 @@ export const conceptsResolver = (
     take: args.take ?? undefined,
     orderBy: {
       createdAt: args.orderBy?.createdAt ?? undefined,
+      updatedAt: args.orderBy?.updatedAt ?? undefined,
       name: args.orderBy?.name ?? undefined,
       type: args.orderBy?.type ?? undefined,
     },
