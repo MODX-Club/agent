@@ -38,7 +38,7 @@ export const InputFormDefault: StoryObj = {
   render: () => (
     <div style={{ width: 380, padding: 16, background: '#f5f5f5' }}>
       <PreventDefault>
-        <ChatTextarea placeholder="Введите ваше сообщение..." rows={1} />
+        <ChatTextarea placeholder="Type your message..." rows={1} />
         <SendButton type="submit" $hasText={false}>
           <svg viewBox="0 0 24 24">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -54,9 +54,9 @@ export const InputFormWithText: StoryObj = {
     <div style={{ width: 380, padding: 16, background: '#f5f5f5' }}>
       <PreventDefault>
         <ChatTextarea
-          placeholder="Введите ваше сообщение..."
+          placeholder="Type your message..."
           rows={1}
-          defaultValue="Привет, как дела?"
+          defaultValue="Hello, how are you?"
         />
         <SendButton type="submit" $hasText={true}>
           <svg viewBox="0 0 24 24">
@@ -102,7 +102,7 @@ export const MessageUser: StoryObj = {
   render: () => (
     <div style={{ width: 380, padding: 16, background: '#f5f5f5' }}>
       <Message $isUser={true}>
-        <Markdown>Привет! Как мне выучить React?</Markdown>
+        <Markdown>Hello! How can I learn React?</Markdown>
       </Message>
     </div>
   ),
@@ -114,9 +114,9 @@ export const MessageBot: StoryObj = {
       <Message $isUser={false}>
         <Markdown>
           Отличный вопрос! Вот шаги для изучения React: 1. **Изучите основы
-          JavaScript** - функции ES6+ 2. **Поймите JSX** - расширение синтаксиса
-          React 3. **Компоненты и Props** - строительные блоки 4. **State и
-          Hooks** - Управление данными
+          JavaScript** - возможности ES6+ 2. **Поймите JSX** - расширение
+          синтаксиса React 3. **Компоненты и Props** - Строительные блоки 4.
+          **State и Hooks** - Управление данными
         </Markdown>
       </Message>
     </div>
@@ -127,7 +127,9 @@ export const MessageBotStreaming: StoryObj = {
   render: () => (
     <div style={{ width: 380, padding: 16, background: '#f5f5f5' }}>
       <Message $isUser={false}>
-        <Markdown>Отличный вопрос! Вот шаги для изучения React...</Markdown>
+        <Markdown>
+          Great question! Here are some steps to learn React...
+        </Markdown>
       </Message>
     </div>
   ),
@@ -146,22 +148,21 @@ export const ChatConversation: StoryObj = {
     <div style={{ width: 380, background: '#f5f5f5' }}>
       <ChatMessages style={{ maxHeight: 400 }}>
         <Message $isUser={true}>
-          <Markdown>Привет! Как мне выучить React?</Markdown>
+          <Markdown>Hello! How can I learn React?</Markdown>
         </Message>
         <Message $isUser={false}>
           <Markdown>
-            Отличный вопрос! Вот шаги: 1. **Изучите основы JavaScript** 2.
-            **Поймите JSX** 3. **Компоненты и Props**
+            Great question! Here are some steps: 1. **Learn JavaScript basics**
+            2. **Understand JSX** 3. **Components and Props**
           </Markdown>
         </Message>
         <Message $isUser={true}>
-          <Markdown>А что насчет хуков?</Markdown>
+          <Markdown>What about hooks?</Markdown>
         </Message>
         <Message $isUser={false}>
           <Markdown>
-            Хуки - это функции, которые позволяют использовать состояние и
-            другие возможности React. Самые распространенные - это `useState` и
-            `useEffect`.
+            Hooks are functions that let you use state and other React features.
+            The most common ones are `useState` and `useEffect`.
           </Markdown>
         </Message>
       </ChatMessages>
@@ -176,7 +177,7 @@ export const ChatWindowDefault: StoryObj = {
         style={{ position: 'relative', bottom: 'auto', right: 'auto' }}
       >
         <ChatHeader>
-          <ChatTitle>Чат Ассистент</ChatTitle>
+          <ChatTitle>Chat Assistant</ChatTitle>
           <HeaderButtons>
             <ExpandButton>
               <svg viewBox="0 0 24 24" width="20" height="20">
@@ -199,11 +200,11 @@ export const ChatWindowDefault: StoryObj = {
         <ChatContentContainer $hasMessages={false}>
           <WelcomeMessage>
             <h4>Привет! Чем могу помочь?</h4>
-            <p>Спросите меня что угодно</p>
+            <p>Спросите что угодно</p>
           </WelcomeMessage>
           <ChatInputContainer>
             <PreventDefault>
-              <ChatTextarea placeholder="Введите ваш вопрос..." rows={1} />
+              <ChatTextarea placeholder="Type your question..." rows={1} />
               <SendButton type="submit" $hasText={false}>
                 <svg viewBox="0 0 24 24">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -224,7 +225,7 @@ export const ChatWindowWithMessages: StoryObj = {
         style={{ position: 'relative', bottom: 'auto', right: 'auto' }}
       >
         <ChatHeader>
-          <ChatTitle>Чат Ассистент</ChatTitle>
+          <ChatTitle>Chat Assistant</ChatTitle>
           <HeaderButtons>
             <ExpandButton>
               <svg viewBox="0 0 24 24" width="20" height="20">
@@ -247,15 +248,15 @@ export const ChatWindowWithMessages: StoryObj = {
         <ChatContentContainer $hasMessages={true}>
           <ChatMessages>
             <Message $isUser={true}>
-              <Markdown>Привет!</Markdown>
+              <Markdown>Hello!</Markdown>
             </Message>
             <Message $isUser={false}>
-              <Markdown>Привет! Чем могу помочь сегодня?</Markdown>
+              <Markdown>Hi! How can I help you today?</Markdown>
             </Message>
           </ChatMessages>
           <ChatInputContainer>
             <PreventDefault>
-              <ChatTextarea placeholder="Введите ваш вопрос..." rows={1} />
+              <ChatTextarea placeholder="Type your question..." rows={1} />
               <SendButton type="submit" $hasText={false}>
                 <svg viewBox="0 0 24 24">
                   <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -276,7 +277,7 @@ export const ChatWindowStreaming: StoryObj = {
         style={{ position: 'relative', bottom: 'auto', right: 'auto' }}
       >
         <ChatHeader>
-          <ChatTitle>Чат Ассистент</ChatTitle>
+          <ChatTitle>Chat Assistant</ChatTitle>
           <HeaderButtons>
             <ExpandButton>
               <svg viewBox="0 0 24 24" width="20" height="20">
@@ -299,18 +300,18 @@ export const ChatWindowStreaming: StoryObj = {
         <ChatContentContainer $hasMessages={true}>
           <ChatMessages>
             <Message $isUser={true}>
-              <Markdown>Как мне выучить React?</Markdown>
+              <Markdown>How do I learn React?</Markdown>
             </Message>
             <Message $isUser={false}>
               <Markdown>
-                Отличный вопрос! Вот шаги для изучения React...
+                Great question! Here are some steps to learn React...
               </Markdown>
             </Message>
           </ChatMessages>
           <ChatInputContainer>
             <PreventDefault>
               <ChatTextarea
-                placeholder="Type your question..."
+                placeholder="Введите ваш вопрос..."
                 rows={1}
                 disabled
               />
