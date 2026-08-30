@@ -1,3 +1,4 @@
+import { useLexicon } from 'src/Custom/Lexicon'
 import { LovableContainer } from '../LovableContainer'
 import {
   LovableFooterBottomStyled,
@@ -12,6 +13,8 @@ import {
   LovableFooterStyled,
 } from './styles'
 import { LovableFooterColumn } from './types'
+import { lovableFooterLexicon } from './lexicon'
+import Link from 'next/link'
 
 export interface LovableFooterProps {
   brandName: string
@@ -26,6 +29,8 @@ export const LovableFooter: React.FC<LovableFooterProps> = ({
   columns,
   copyright,
 }) => {
+  const { t } = useLexicon(lovableFooterLexicon)
+
   return (
     <LovableFooterStyled>
       <LovableContainer>
@@ -55,7 +60,12 @@ export const LovableFooter: React.FC<LovableFooterProps> = ({
         </LovableFooterGridStyled>
         <LovableFooterBottomStyled>
           <span>{copyright}</span>
-          <span>Made for safe MODX modernization</span>
+          <div>
+            <span>{t('lovableFooter.madeFor')}</span>{' '}
+            <Link target="_blank" href="https://fi1osof.ru">
+              By 𝕱
+            </Link>
+          </div>
         </LovableFooterBottomStyled>
       </LovableContainer>
     </LovableFooterStyled>

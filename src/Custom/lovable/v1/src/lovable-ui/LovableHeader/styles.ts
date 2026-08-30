@@ -11,30 +11,49 @@ export const LovableHeaderStyled = styled.header`
 `
 
 export const LovableHeaderInnerStyled = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  grid-template-areas:
+    'logo locale cta burger'
+    'nav nav nav nav';
   align-items: center;
-  justify-content: space-between;
   gap: ${({ theme }) => theme.lovableSpace.sm};
-  flex-wrap: wrap;
   padding: 10px 0;
+
+  [data-area='logo'] {
+    grid-area: logo;
+  }
+  [data-area='burger'] {
+    grid-area: burger;
+  }
+  [data-area='nav'] {
+    grid-area: nav;
+  }
+  [data-area='locale'] {
+    grid-area: locale;
+  }
+  [data-area='cta'] {
+    grid-area: cta;
+  }
+
+  @media (min-width: ${({ theme }) => theme.lovableBreakpoint.tablet}) {
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: 'logo nav locale cta';
+  }
 `
 
 export const LovableHeaderNavStyled = styled.nav<{ $open: boolean }>`
-  order: 3;
-  flex-basis: 100%;
   display: ${({ $open }) => ($open ? 'flex' : 'none')};
   flex-direction: column;
   gap: ${({ theme }) => theme.lovableSpace.xxs};
-  padding-bottom: ${({ theme }) => theme.lovableSpace.sm};
+  padding: ${({ theme }) => theme.lovableSpace.sm} 0;
   border-top: 1px solid ${({ theme }) => theme.lovableColor.border};
-  padding-top: ${({ theme }) => theme.lovableSpace.sm};
 
   @media (min-width: ${({ theme }) => theme.lovableBreakpoint.tablet}) {
-    order: 0;
-    flex-basis: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: ${({ theme }) => theme.lovableSpace.xs};
     padding: 0;
     border-top: none;
@@ -67,12 +86,6 @@ export const LovableHeaderNavItemStyled = styled(Link)`
     padding: ${({ theme }) =>
       `${theme.lovableSpace.xs} ${theme.lovableSpace.sm}`};
   }
-`
-
-export const LovableHeaderActionsStyled = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.lovableSpace.xs};
 `
 
 const hiddenOnMobile = css`

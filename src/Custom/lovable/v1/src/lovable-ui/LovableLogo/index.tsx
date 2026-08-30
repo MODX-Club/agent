@@ -8,11 +8,11 @@ interface LovableLogoProps {
   name: string
 }
 
-export const LovableLogo: React.FC<LovableLogoProps> = ({ name }) => {
+export const LovableLogo: React.FC<LovableLogoProps> = ({ name, ...other }) => {
   const [head, ...rest] = name.split('.')
   const tail = rest.join('.')
   return (
-    <LovableLogoStyled type="button" aria-label={name} href={'/'}>
+    <LovableLogoStyled type="button" aria-label={name} href={'/'} {...other}>
       <LovableLogoMarkStyled>M</LovableLogoMarkStyled>
       <LovableLogoTextStyled>
         {head}

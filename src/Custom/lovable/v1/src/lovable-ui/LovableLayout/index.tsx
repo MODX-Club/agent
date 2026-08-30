@@ -6,7 +6,7 @@ import { LovableLayoutMainStyled, LovableLayoutStyled } from './styles'
 export const LovableLayout: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const { data, onPrimaryCta, onSecondaryCta } = useLovableContext()
+  const { data, onPrimaryCta } = useLovableContext()
 
   return (
     <LovableLayoutStyled>
@@ -14,9 +14,7 @@ export const LovableLayout: React.FC<React.PropsWithChildren> = ({
         brandName={data.brand.name}
         nav={data.nav}
         ctaLabel={data.ctaLabel}
-        docsLabel={data.docsLabel}
         onCtaClick={onPrimaryCta}
-        onDocsClick={onSecondaryCta}
       />
       <LovableLayoutMainStyled>{children}</LovableLayoutMainStyled>
       <LovableFooter

@@ -6,9 +6,12 @@ import { SeoHeaders } from 'src/components/seo/SeoHeaders'
 import { PostsPageProps } from './interfaces'
 import { getPostsConnectionQueryVariables } from './helpers'
 import { useAppContext } from 'src/components/AppContext'
+import { useLexicon } from 'src/Custom/Lexicon'
+import { postsLexicon } from './lexicon'
 
 export const PostsPage: Page<PostsPageProps> = ({ page, siteOrigin }) => {
   const { user: currentUser } = useAppContext()
+  const { t } = useLexicon(postsLexicon)
 
   const postsResponse = usePostsConnectionQuery({
     variables: getPostsConnectionQueryVariables({
@@ -23,7 +26,8 @@ export const PostsPage: Page<PostsPageProps> = ({ page, siteOrigin }) => {
   return (
     <>
       <SeoHeaders
-        title="Posts"
+        title={t('seo.title')}
+        description={t('seo.description')}
         siteOrigin={siteOrigin}
         canonical={`/posts${page > 1 ? `?page=${page}` : ''}`}
       />

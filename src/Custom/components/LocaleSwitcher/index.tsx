@@ -17,7 +17,7 @@ function buildLocaleHref(locale: Locale, pathname: string): string {
     : `/${locale}${cleanPath === '/' ? '' : cleanPath}`
 }
 
-export const LocaleSwitcher: React.FC = () => {
+export const LocaleSwitcher: React.FC = ({ ...other }) => {
   const router = useRouter()
 
   const locale: Locale = isLocale(router.locale)
@@ -62,7 +62,7 @@ export const LocaleSwitcher: React.FC = () => {
   const currentLocale = locales.find((l) => l.code === locale) || locales[0]
 
   return (
-    <LocaleSwitcherStyled ref={ref}>
+    <LocaleSwitcherStyled ref={ref} {...other}>
       <LocaleSwitcherCheckboxStyled
         type="checkbox"
         id={checkboxId}

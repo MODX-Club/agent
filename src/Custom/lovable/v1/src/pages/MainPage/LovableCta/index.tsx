@@ -1,3 +1,4 @@
+import { useLexicon } from 'src/Custom/Lexicon'
 import { LovableContainer } from '../../../lovable-ui/LovableContainer'
 import { LovableButton } from '../../../lovable-ui/LovableButton'
 import { PageSection } from '../styles'
@@ -14,12 +15,15 @@ import {
   CtaTitle,
 } from './styles'
 import type { LovableCtaProps } from './types'
+import { lovableCtaLexicon } from './lexicon'
 
 export const LovableCta: React.FC<LovableCtaProps> = ({
   data,
   onPrimaryCta,
   // onSecondaryCta,
 }) => {
+  const { t } = useLexicon(lovableCtaLexicon)
+
   return (
     <PageSection id="contacts">
       <LovableContainer>
@@ -32,7 +36,7 @@ export const LovableCta: React.FC<LovableCtaProps> = ({
               <LovableButton
                 variant="primary"
                 onClick={onPrimaryCta}
-                value={'Хочу заказать аудит сайта'}
+                value={t('lovableCta.orderAudit')}
               >
                 {data.primaryCta}
               </LovableButton>

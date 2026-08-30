@@ -9,7 +9,7 @@ import heroImage from '../../assets/hero-migration.jpg'
 import processImage from '../../assets/process-pipeline.jpg'
 
 export const MainPageLovable: React.FC = () => {
-  const { data, onPrimaryCta, onSecondaryCta } = useLovableContext()
+  const { data, onPrimaryCta } = useLovableContext()
 
   return (
     <>
@@ -17,17 +17,12 @@ export const MainPageLovable: React.FC = () => {
         data={data.hero}
         imageSrc={heroImage.src}
         onPrimaryCta={onPrimaryCta}
-        onSecondaryCta={onSecondaryCta}
       />
       <LovableProblem data={data.problem} />
       <LovableProcess data={data.process} imageSrc={processImage.src} />
       <LovableGuarantees data={data.guarantees} />
       <LovableTech data={data.tech} />
-      <LovableCta
-        data={data.cta}
-        onPrimaryCta={onPrimaryCta}
-        onSecondaryCta={onSecondaryCta}
-      />
+      <LovableCta data={data.cta} onPrimaryCta={onPrimaryCta} />
     </>
   )
 }

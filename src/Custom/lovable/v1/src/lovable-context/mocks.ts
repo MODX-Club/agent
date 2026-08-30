@@ -107,7 +107,7 @@ export interface LovableMockData {
   }
   nav: LovableNavItem[]
   ctaLabel: string
-  docsLabel?: string
+  // docsLabel?: string
   hero: LovableHeroData
   problem: LovableProblemData
   process: LovableProcessData

@@ -8,7 +8,6 @@ export interface LovableContextValue {
    */
   onNavigate: (href: string) => void
   onPrimaryCta?: React.MouseEventHandler<HTMLButtonElement>
-  onSecondaryCta: () => void
 }
 
 const LovableCtx = createContext<LovableContextValue | null>(null)

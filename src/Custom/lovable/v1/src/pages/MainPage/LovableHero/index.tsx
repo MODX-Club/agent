@@ -1,3 +1,4 @@
+import { useLexicon } from 'src/Custom/Lexicon'
 import { LovableContainer } from '../../../lovable-ui/LovableContainer'
 import { LovableButton } from '../../../lovable-ui/LovableButton'
 import {
@@ -19,6 +20,7 @@ import {
   HeroTitleAccent,
 } from './styles'
 import type { LovableHeroProps } from './types'
+import { lovableHeroLexicon } from './lexicon'
 
 export const LovableHero: React.FC<LovableHeroProps> = ({
   data,
@@ -26,6 +28,8 @@ export const LovableHero: React.FC<LovableHeroProps> = ({
   onPrimaryCta,
   onSecondaryCta,
 }) => {
+  const { t } = useLexicon(lovableHeroLexicon)
+
   return (
     <HeroSection id="hero">
       <LovableContainer>
@@ -47,7 +51,7 @@ export const LovableHero: React.FC<LovableHeroProps> = ({
               <LovableButton
                 variant="primary"
                 onClick={onPrimaryCta}
-                value={'Хочу обсудить перенос сайта'}
+                value={t('lovableHero.discussMigration')}
               >
                 {data.primaryCta}
               </LovableButton>

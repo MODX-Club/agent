@@ -15,6 +15,5 @@ export const Default: Story = {
     brandName: lovableMockData.brand.name,
     nav: lovableMockData.nav,
     ctaLabel: lovableMockData.ctaLabel,
-    docsLabel: lovableMockData.docsLabel,
   },
 }

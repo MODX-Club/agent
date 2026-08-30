@@ -13,7 +13,6 @@ const meta: Meta<typeof LovableLayout> = {
         value={{
           onNavigate: (url: string) => console.log(url),
           onPrimaryCta: () => console.log('onPrimaryCta'),
-          onSecondaryCta: () => console.log('onSecondaryCta'),
           data: lovableMockData,
         }}
       >

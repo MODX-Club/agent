@@ -49,7 +49,7 @@ export const PostPage: Page<PostPageProps> = ({ postId, siteOrigin }) => {
   return (
     <>
       <SeoHeaders
-        title={post.title || 'Post'}
+        title={post.title || ''}
         description={post.description}
         noindex={!searchable}
         nofollow={!searchable}

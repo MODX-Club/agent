@@ -1,20 +1,26 @@
+import { useLexicon } from 'src/Custom/Lexicon'
 import { Page } from 'src/components/pages/_App/interfaces'
 import { JsonLd } from 'src/components/seo/JsonLd'
 import { createWebSite } from 'src/components/seo/JsonLd/helpers'
 import { SeoHeaders } from 'src/components/seo/SeoHeaders'
 import { MainPageLovable } from 'src/Custom/lovable/v1/src/pages/MainPage'
+import { mainpageLexicon } from './lexicon'
 
 export const MainPageCustom: Page = ({ siteOrigin }) => {
-  const siteTitle =
-    'Перенос и модернизация сайтов на MODX без остановки бизнеса | modx.club'
+  const { t } = useLexicon(mainpageLexicon)
 
-  const description =
-    'Обновление и перенос сайтов на MODX без остановки работы. Контейнеризация в Docker, новый фронтенд поверх MODX, сохранение SEO, поэтапная миграция и полный переход на современную архитектуру с возможностью отката на каждом этапе.'
+  const siteTitle = t('seo.title')
+  const description = t('seo.description')
 
   return (
     <>
       {siteTitle && (
-        <SeoHeaders title={siteTitle} canonical={'/'} siteOrigin={siteOrigin} />
+        <SeoHeaders
+          title={siteTitle}
+          description={description}
+          canonical={'/'}
+          siteOrigin={siteOrigin}
+        />
       )}
       {siteOrigin && (
         <JsonLd
