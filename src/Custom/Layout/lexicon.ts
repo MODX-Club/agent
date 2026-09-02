@@ -246,7 +246,7 @@ export const lovableMockDataTranslations: Record<Locale, LovableMockData> = {
           id: 'resources',
           title: 'Ресурсы',
           items: [
-            { id: 'blog', label: 'Блог', href: '/posts' },
+            // { id: 'blog', label: 'Блог', href: '/posts' },
             { id: 'about', label: 'О Клубе', href: '/about' },
           ],
         },
@@ -503,7 +503,7 @@ export const lovableMockDataTranslations: Record<Locale, LovableMockData> = {
           id: 'resources',
           title: 'Resources',
           items: [
-            { id: 'blog', label: 'Blog', href: '/posts' },
+            // { id: 'blog', label: 'Blog', href: '/posts' },
             { id: 'about', label: 'About the Club', href: '/about' },
           ],
         },
